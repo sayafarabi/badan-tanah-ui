@@ -233,10 +233,9 @@
 
 
     <!-- ASET & PETA SECTION -->
-    <div class="max-w-7xl mx-auto px-4 py-20 bg-white rounded-2xl shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-20">
 
-        <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_0.85fr] gap-10 bg-white rounded-2xl shadow-sm p-6">
-
+        <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_0.85fr] gap-10">
             <!-- ========================= -->
             <!-- ASET PERSEDIAAN TANAH -->
             <!-- ========================= -->
@@ -331,7 +330,7 @@
 
 
             <!-- PETA INTERAKTIF -->
-            <div class="min-w-0 bg-white rounded-2xl shadow-sm p-6">
+            <div class="min-w-0 bg-white rounded-xl shadow-md p-5">
 
                 <!-- HEADER -->
                 <div class="flex items-end justify-between mb-5">

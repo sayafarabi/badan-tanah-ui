@@ -6,9 +6,9 @@
 
 <div class="max-w-7xl mx-auto">
 
-    <!-- ===================================================== -->
-    <!-- HEADER -->
-    <!-- ===================================================== -->
+    {{-- =====================================================
+        HEADER
+    ====================================================== --}}
 
     <div class="flex items-center justify-between mb-5">
 
@@ -49,199 +49,30 @@
     </div>
 
 
-    <!-- ===================================================== -->
-    <!-- TAB NAVIGASI -->
-    <!-- ===================================================== -->
+    {{-- =====================================================
+        NAVIGASI ASET
+    ====================================================== --}}
 
-    <div class="grid grid-cols-9 border-b border-gray-200 mb-5">
-
-        <!-- DATA ASET -->
-        <a href="{{ route('admin.aset.index') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-database text-sm"></i>
-
-            <span class="w-full">
-                Data Aset
-            </span>
-
-        </a>
-
-
-        <!-- PETA -->
-        <a href="{{ route('admin.aset.peta') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-map-location-dot text-sm"></i>
-
-            <span class="w-full">
-                Peta Interaktif
-            </span>
-
-        </a>
-
-
-        <!-- PROFIL AKTIF -->
-        <a href="{{ route('admin.aset.profil') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-[#006400]
-                   text-[#006400]
-                   font-semibold text-[10px]
-                   text-center leading-tight">
-
-            <i class="fas fa-layer-group text-sm"></i>
-
-            <span class="w-full">
-                Profil Persediaan
-                <br>
-                Tanah
-            </span>
-
-        </a>
-
-
-        <!-- PENGELOLAAN -->
-        <a href="{{ route('admin.aset.pengelolaan') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-gear text-sm"></i>
-
-            <span class="w-full">
-                Pengelolaan
-                <br>
-                Tanah
-            </span>
-
-        </a>
-
-
-        <!-- PENGEMBANGAN -->
-        <a href="{{ route('admin.aset.pengembangan') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-chart-line text-sm"></i>
-
-            <span class="w-full">
-                Pengembangan
-                <br>
-                Tanah
-            </span>
-
-        </a>
-
-
-        <!-- WILAYAH -->
-        <a href="{{ route('admin.aset.wilayah') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-map text-sm"></i>
-
-            <span class="w-full">
-                Wilayah
-            </span>
-
-        </a>
-
-
-        <!-- STATUS -->
-        <a href="{{ route('admin.aset.status') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-circle-check text-sm"></i>
-
-            <span class="w-full">
-                Status
-                <br>
-                Tanah
-            </span>
-
-        </a>
-
-
-        <!-- DOKUMEN -->
-        <a href="{{ route('admin.aset.dokumen') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-file-lines text-sm"></i>
-
-            <span class="w-full">
-                Dokumen
-            </span>
-
-        </a>
-
-
-        <!-- STATISTIK -->
-        <a href="{{ route('admin.aset.statistik') }}"
-            class="flex flex-col items-center justify-start
-                   gap-2 py-3 px-2 min-w-0
-                   border-b-2 border-transparent
-                   text-gray-500 hover:text-gray-700
-                   font-semibold text-[10px]
-                   text-center leading-tight transition">
-
-            <i class="fas fa-chart-pie text-sm"></i>
-
-            <span class="w-full">
-                Statistik
-            </span>
-
-        </a>
-
+    <div class="overflow-x-auto">
+        @include('admin.aset._navigation')
     </div>
 
 
-    <!-- ===================================================== -->
-    <!-- KONTEN UTAMA -->
-    <!-- ===================================================== -->
+    {{-- =====================================================
+        KONTEN UTAMA
+    ====================================================== --}}
 
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4">
 
 
-        <!-- ================================================= -->
-        <!-- INFORMASI PROFIL -->
-        <!-- ================================================= -->
+        {{-- =================================================
+            INFORMASI PROFIL
+        ================================================== --}}
 
         <div class="bg-white rounded-xl border border-gray-200
                     shadow-sm overflow-hidden">
 
-            <!-- HEADER CARD -->
+            {{-- HEADER CARD --}}
 
             <div class="px-5 py-4 border-b border-gray-100">
 
@@ -272,14 +103,15 @@
             </div>
 
 
-            <!-- ISI -->
+            {{-- ISI --}}
 
             <div class="p-5">
 
                 <div class="grid grid-cols-2 gap-x-8 gap-y-5">
 
 
-                    <!-- NAMA -->
+                    {{-- NAMA --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -304,7 +136,8 @@
                     </div>
 
 
-                    <!-- STATUS -->
+                    {{-- STATUS --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -328,7 +161,8 @@
                     </div>
 
 
-                    <!-- DESKRIPSI -->
+                    {{-- DESKRIPSI --}}
+
                     <div class="col-span-2">
 
                         <label class="block text-[9px]
@@ -352,7 +186,8 @@
                     </div>
 
 
-                    <!-- DATA ASET -->
+                    {{-- DATA ASET --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -377,7 +212,8 @@
                     </div>
 
 
-                    <!-- PEMANFAATAN -->
+                    {{-- PEMANFAATAN --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -402,7 +238,8 @@
                     </div>
 
 
-                    <!-- WILAYAH -->
+                    {{-- WILAYAH --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -427,7 +264,8 @@
                     </div>
 
 
-                    <!-- SUMBER DATA -->
+                    {{-- SUMBER DATA --}}
+
                     <div>
 
                         <label class="block text-[9px]
@@ -452,7 +290,8 @@
                     </div>
 
 
-                    <!-- KETERANGAN -->
+                    {{-- KETERANGAN --}}
+
                     <div class="col-span-2">
 
                         <label class="block text-[9px]
@@ -479,7 +318,7 @@
             </div>
 
 
-            <!-- FOOTER CARD -->
+            {{-- FOOTER CARD --}}
 
             <div class="px-5 py-3 border-t border-gray-100
                         flex items-center justify-between">
@@ -503,14 +342,14 @@
         </div>
 
 
-        <!-- ================================================= -->
-        <!-- SIDEBAR -->
-        <!-- ================================================= -->
+        {{-- =================================================
+            SIDEBAR
+        ================================================== --}}
 
         <div class="space-y-4">
 
 
-            <!-- RINGKASAN PROFIL -->
+            {{-- RINGKASAN PROFIL --}}
 
             <div class="bg-white rounded-xl border border-gray-200
                         shadow-sm overflow-hidden">
@@ -526,8 +365,6 @@
 
                 <div class="p-4 space-y-4">
 
-
-                    <!-- ITEM -->
 
                     <div>
 
@@ -592,7 +429,7 @@
             </div>
 
 
-            <!-- MENU CEPAT -->
+            {{-- MENU TERKAIT --}}
 
             <div class="bg-white rounded-xl border border-gray-200
                         shadow-sm overflow-hidden">
@@ -688,7 +525,7 @@
             </div>
 
 
-            <!-- INFORMASI -->
+            {{-- INFORMASI --}}
 
             <div class="bg-green-50 border border-green-100
                         rounded-xl p-4">
