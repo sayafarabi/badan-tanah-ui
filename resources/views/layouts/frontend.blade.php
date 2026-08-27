@@ -9,7 +9,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -19,10 +20,12 @@
         * {
             -webkit-tap-highlight-color: transparent;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
+
         .leaflet-container {
             z-index: 0;
         }
@@ -34,13 +37,16 @@
             width: 6px;
             height: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #006400;
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #005500;
         }
@@ -94,8 +100,9 @@
             padding: 24px 20px 30px;
             display: flex;
             flex-direction: column;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
         }
+
         .mobile-nav.open {
             transform: translateX(0);
         }
@@ -108,14 +115,17 @@
             border-bottom: 1px solid #f3f4f6;
             margin-bottom: 8px;
         }
+
         .mobile-nav-header .logo-text {
             font-size: 1rem;
             font-weight: 700;
             color: #0B2A4A;
         }
+
         .mobile-nav-header .logo-text span {
             color: #006400;
         }
+
         .mobile-nav-close {
             width: 36px;
             height: 36px;
@@ -130,6 +140,7 @@
             color: #374151;
             font-size: 1rem;
         }
+
         .mobile-nav-close:hover,
         .mobile-nav-close:active {
             background: #e5e7eb;
@@ -140,6 +151,7 @@
             flex: 1;
             padding: 8px 0;
         }
+
         .mobile-nav .nav-item {
             display: flex;
             align-items: center;
@@ -154,11 +166,13 @@
             margin-bottom: 2px;
             position: relative;
         }
+
         .mobile-nav .nav-item:active,
         .mobile-nav .nav-item.active {
             background: #f0fdf4;
             color: #006400;
         }
+
         .mobile-nav .nav-item i {
             width: 20px;
             text-align: center;
@@ -166,10 +180,12 @@
             font-size: 1rem;
             transition: color 0.2s ease;
         }
+
         .mobile-nav .nav-item:active i,
         .mobile-nav .nav-item.active i {
             color: #006400;
         }
+
         .mobile-nav .nav-item .nav-badge {
             margin-left: auto;
             font-size: 0.6rem;
@@ -179,6 +195,7 @@
             border-radius: 20px;
             font-weight: 600;
         }
+
         .mobile-nav .nav-item:active .nav-badge,
         .mobile-nav .nav-item.active .nav-badge {
             background: #dcfce7;
@@ -218,6 +235,7 @@
             flex-direction: column;
             gap: 8px;
         }
+
         .mobile-nav-footer .btn-nav {
             display: flex;
             align-items: center;
@@ -232,17 +250,21 @@
             border: none;
             cursor: pointer;
         }
+
         .mobile-nav-footer .btn-nav-login {
             background: #f3f4f6;
             color: #374151;
         }
+
         .mobile-nav-footer .btn-nav-login:active {
             background: #e5e7eb;
         }
+
         .mobile-nav-footer .btn-nav-register {
             background: #006400;
             color: white;
         }
+
         .mobile-nav-footer .btn-nav-register:active {
             background: #005500;
         }
@@ -250,12 +272,13 @@
         .mobile-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 99998;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.35s ease;
         }
+
         .mobile-overlay.active {
             opacity: 1;
             pointer-events: all;
@@ -273,6 +296,7 @@
             border: none;
             background: transparent;
         }
+
         .hamburger span {
             display: block;
             height: 2.5px;
@@ -281,14 +305,17 @@
             transition: all 0.3s ease;
             transform-origin: center;
         }
+
         .hamburger.active span:nth-child(1) {
             transform: translateY(8.5px) rotate(45deg);
             background: #006400;
         }
+
         .hamburger.active span:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
+
         .hamburger.active span:nth-child(3) {
             transform: translateY(-8.5px) rotate(-45deg);
             background: #006400;
@@ -301,6 +328,7 @@
             .dropdown-desktop {
                 position: relative;
             }
+
             .dropdown-desktop .dropdown-menu {
                 position: absolute;
                 top: 100%;
@@ -309,8 +337,8 @@
                 min-width: 220px;
                 background: white;
                 border-radius: 14px;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-                border: 1px solid rgba(0,0,0,0.04);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+                border: 1px solid rgba(0, 0, 0, 0.04);
                 padding: 8px 0;
                 opacity: 0;
                 visibility: hidden;
@@ -318,11 +346,13 @@
                 transition: all 0.25s ease;
                 z-index: 50;
             }
+
             .dropdown-desktop:hover .dropdown-menu {
                 opacity: 1;
                 visibility: visible;
                 transform: translateY(0) scale(1);
             }
+
             .dropdown-desktop .dropdown-menu a {
                 display: flex;
                 align-items: center;
@@ -335,10 +365,12 @@
                 border-radius: 0;
                 letter-spacing: 0.3px;
             }
+
             .dropdown-desktop .dropdown-menu a:hover {
                 background: #f0fdf4;
                 color: #006400;
             }
+
             .dropdown-desktop .dropdown-menu a i {
                 width: 20px;
                 color: #9ca3af;
@@ -381,6 +413,7 @@
                 width: 60px;
                 height: 54px;
             }
+
             .logo-container img {
                 max-width: 58px;
                 max-height: 52px;
@@ -392,6 +425,7 @@
                 width: 70px;
                 height: 62px;
             }
+
             .logo-container img {
                 max-width: 68px;
                 max-height: 60px;
@@ -403,6 +437,7 @@
                 width: 80px;
                 height: 72px;
             }
+
             .logo-container img {
                 max-width: 78px;
                 max-height: 70px;
@@ -414,24 +449,32 @@
                 width: 90px;
                 height: 80px;
             }
+
             .logo-container img {
                 max-width: 88px;
                 max-height: 78px;
             }
         }
     </style>
+
+    <style>
+    :root {
+        --color-primary: {{ $pengaturan->warna_utama ?? '#0B2A4A' }};
+        --color-secondary: {{ $pengaturan->warna_sekunder ?? '#1D4ED8' }};
+    }
+</style>
+
 </head>
 
 <body class="bg-white text-gray-800 antialiased">
 
     @php
-        $mainMenus = $menuNavigasi->filter(function($menu) {
+        $mainMenus = $menuNavigasi->filter(function ($menu) {
             return $menu->status == 'Aktif' &&
-                   !in_array(strtolower($menu->nama), ['faq', 'karier', 'kontak', 'beranda']);
+                !in_array(strtolower($menu->nama), ['faq', 'karier', 'kontak', 'beranda']);
         });
-        $otherMenus = $menuNavigasi->filter(function($menu) {
-            return $menu->status == 'Aktif' &&
-                   in_array(strtolower($menu->nama), ['faq', 'karier', 'kontak']);
+        $otherMenus = $menuNavigasi->filter(function ($menu) {
+            return $menu->status == 'Aktif' && in_array(strtolower($menu->nama), ['faq', 'karier', 'kontak']);
         });
     @endphp
 
@@ -469,12 +512,14 @@
                 Aset Persediaan Tanah
             </a>
 
-            <a href="{{ route('partnership') }}" class="nav-item {{ request()->routeIs('partnership') ? 'active' : '' }}">
+            <a href="{{ route('partnership') }}"
+                class="nav-item {{ request()->routeIs('partnership') ? 'active' : '' }}">
                 <i class="fas fa-handshake"></i>
                 Pemanfaatan & Kerjasama
             </a>
 
-            <a href="{{ route('publications') }}" class="nav-item {{ request()->routeIs('publications*') ? 'active' : '' }}">
+            <a href="{{ route('publications') }}"
+                class="nav-item {{ request()->routeIs('publications*') ? 'active' : '' }}">
                 <i class="fas fa-newspaper"></i>
                 Publikasi
             </a>
@@ -513,7 +558,8 @@
     <!-- ========================================================= -->
     <!-- TOP BAR -->
     <!-- ========================================================= -->
-    <div class="text-white text-xs hidden sm:block" style="background-color: {{ $pengaturan->warna_utama ?? '#0B2A4A' }};">
+    <div class="text-white text-xs hidden sm:block"
+        style="background-color: {{ $pengaturan->warna_utama ?? '#0B2A4A' }};">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
             <div class="flex items-center gap-2">
                 <i class="fas fa-globe text-blue-300"></i>
@@ -568,34 +614,35 @@
 
                     <!-- Dropdown Lainnya (Desktop) -->
                     @if ($otherMenus->count() > 0)
-                    <div class="dropdown-desktop">
-                        <button class="flex items-center gap-1 hover:text-[#006400] transition font-medium {{ request()->routeIs('faq') || request()->routeIs('karier') || request()->routeIs('kontak') ? 'text-[#006400] font-semibold' : '' }}">
-                            Lainnya
-                            <i class="fas fa-chevron-down text-[10px]"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            @foreach ($otherMenus as $menu)
-                                @php
-                                    $icon = match(strtolower($menu->nama)) {
-                                        'faq' => 'fa-circle-question',
-                                        'karier' => 'fa-briefcase',
-                                        'kontak' => 'fa-envelope',
-                                        default => 'fa-circle'
-                                    };
-                                    $routeName = match(strtolower($menu->nama)) {
-                                        'faq' => 'faq',
-                                        'karier' => 'karier',
-                                        'kontak' => 'kontak',
-                                        default => ''
-                                    };
-                                @endphp
-                                <a href="{{ route($routeName) }}">
-                                    <i class="fas {{ $icon }}"></i>
-                                    {{ $menu->nama }}
-                                </a>
-                            @endforeach
+                        <div class="dropdown-desktop">
+                            <button
+                                class="flex items-center gap-1 hover:text-[#006400] transition font-medium {{ request()->routeIs('faq') || request()->routeIs('karier') || request()->routeIs('kontak') ? 'text-[#006400] font-semibold' : '' }}">
+                                Lainnya
+                                <i class="fas fa-chevron-down text-[10px]"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                @foreach ($otherMenus as $menu)
+                                    @php
+                                        $icon = match (strtolower($menu->nama)) {
+                                            'faq' => 'fa-circle-question',
+                                            'karier' => 'fa-briefcase',
+                                            'kontak' => 'fa-envelope',
+                                            default => 'fa-circle',
+                                        };
+                                        $routeName = match (strtolower($menu->nama)) {
+                                            'faq' => 'faq',
+                                            'karier' => 'karier',
+                                            'kontak' => 'kontak',
+                                            default => '',
+                                        };
+                                    @endphp
+                                    <a href="{{ route($routeName) }}">
+                                        <i class="fas {{ $icon }}"></i>
+                                        {{ $menu->nama }}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
                     @endif
 
                 </nav>
@@ -629,87 +676,166 @@
     <!-- FOOTER -->
     <!-- ========================================================= -->
     <footer class="text-white mt-20" style="background-color: {{ $pengaturan->warna_utama ?? '#0B2A4A' }};">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 border-b border-white/10">
 
-            <!-- Kolom 1 -->
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="flex items-center justify-center w-13 h-13 rounded">
-                        <img src="{{ asset('images/Logo-badan-bank-tanah.png') }}" alt="Logo"
-                            class="w-full h-full object-contain">
+        <div class="max-w-7xl mx-auto px-6 py-14">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+                {{-- IDENTITAS --}}
+                <div class="lg:col-span-2">
+
+                    <h3 class="text-xl font-bold mb-4">
+                        {{ $pengaturan->nama_website ?? 'Badan Bank Tanah' }}
+                    </h3>
+
+                    <p class="text-white/75 text-sm leading-relaxed max-w-xl">
+                        {{ $pengaturan->footer_deskripsi ??
+                            ($pengaturan->deskripsi_website ??
+                                'Badan Bank Tanah mengelola aset tanah negara secara profesional, transparan, dan berkelanjutan.') }}
+                    </p>
+
+                </div>
+
+
+                {{-- KONTAK --}}
+                <div>
+
+                    <h4 class="font-bold mb-4">
+                        Hubungi Kami
+                    </h4>
+
+                    <div class="space-y-3 text-sm text-white/75">
+
+                        @if (!empty($pengaturan->footer_alamat))
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-location-dot mt-1"></i>
+
+                                <span>
+                                    {{ $pengaturan->footer_alamat }}
+                                </span>
+                            </div>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_email))
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-envelope"></i>
+
+                                <a href="mailto:{{ $pengaturan->footer_email }}" class="hover:text-white transition">
+                                    {{ $pengaturan->footer_email }}
+                                </a>
+                            </div>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_telepon))
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-phone"></i>
+
+                                <a href="tel:{{ $pengaturan->footer_telepon }}" class="hover:text-white transition">
+                                    {{ $pengaturan->footer_telepon }}
+                                </a>
+                            </div>
+                        @endif
+
                     </div>
+
                 </div>
-                <p class="text-sm text-gray-300 leading-relaxed">
-                    Mengelola tanah negara secara profesional, transparan, dan berkelanjutan untuk kepentingan rakyat.
-                </p>
+
+
+                {{-- MEDIA SOSIAL --}}
+                <div>
+
+                    <h4 class="font-bold mb-4">
+                        Media Sosial
+                    </h4>
+
+                    <div class="flex flex-wrap gap-3">
+
+                        @if (!empty($pengaturan->footer_facebook))
+                            <a href="{{ $pengaturan->footer_facebook }}" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+                                aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_twitter))
+                            <a href="{{ $pengaturan->footer_twitter }}" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+                                aria-label="Twitter">
+                                <i class="fab fa-x-twitter"></i>
+                            </a>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_instagram))
+                            <a href="{{ $pengaturan->footer_instagram }}" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+                                aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_linkedin))
+                            <a href="{{ $pengaturan->footer_linkedin }}" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"
+                                aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        @endif
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- Kolom 2 -->
-            <div>
-                <h4 class="font-bold text-white mb-4 uppercase text-xs tracking-wider">Tautan Cepat</h4>
-                <ul class="space-y-2 text-sm text-gray-300">
-                    <li><a href="{{ route('about') }}" class="hover:text-white transition">Tentang Kami</a></li>
-                    <li><a href="{{ route('assets') }}" class="hover:text-white transition">Aset Persediaan</a></li>
-                    <li><a href="{{ route('partnership') }}" class="hover:text-white transition">Pemanfaatan & Kerjasama</a></li>
-                    <li><a href="{{ route('publications') }}" class="hover:text-white transition">Publikasi</a></li>
-                    <li><a href="{{ route('faq') }}" class="hover:text-white transition">FAQ</a></li>
-                    <li><a href="{{ route('karier') }}" class="hover:text-white transition">Karier</a></li>
-                    <li><a href="{{ route('kontak') }}" class="hover:text-white transition">Kontak</a></li>
-                </ul>
-            </div>
 
-            <!-- Kolom 3 -->
-            <div>
-                <h4 class="font-bold text-white mb-4 uppercase text-xs tracking-wider">Kontak</h4>
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <i class="fas fa-map-marker-alt text-blue-400 mt-0.5"></i>
-                        <span>Jl. H. Juanda No. 15, Jakarta Pusat</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-envelope text-blue-400"></i>
-                        <a href="mailto:info@bantah.go.id" class="hover:text-white transition">info@bantah.go.id</a>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i class="fas fa-phone text-blue-400"></i>
-                        <a href="tel:02134567890" class="hover:text-white transition">(021) 3456-7890</a>
-                    </li>
-                </ul>
-                <div class="flex gap-3 mt-4">
-                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+            {{-- BOTTOM --}}
+            <div class="border-t border-white/10 mt-10 pt-6">
 
-            <!-- Kolom 4 -->
-            <div>
-                <h4 class="font-bold text-white mb-4 uppercase text-xs tracking-wider">Newsletter</h4>
-                <p class="text-sm text-gray-300 mb-3">Dapatkan informasi terbaru dari Badan Bank Tanah.</p>
-                <div class="flex">
-                    <input type="email" placeholder="Email Anda"
-                        class="flex-1 bg-white/10 text-white px-4 py-3 rounded-l-lg border border-white/20 focus:outline-none focus:border-blue-400 text-sm placeholder-gray-400">
-                    <button class="px-4 rounded-r-lg transition hover:opacity-90"
-                        style="background-color: {{ $pengaturan->warna_sekunder ?? '#1D4ED8' }};">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+                    <p class="text-xs text-white/60">
+                        {{ $pengaturan->footer_copyright ?? '© 2026 Badan Bank Tanah. Seluruh hak cipta dilindungi.' }}
+                    </p>
+
+
+                    <div class="flex flex-wrap gap-4 text-xs text-white/60">
+
+                        @if (!empty($pengaturan->footer_privacy))
+                            <a href="#" class="hover:text-white transition">
+                                {{ $pengaturan->footer_privacy }}
+                            </a>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_terms))
+                            <a href="#" class="hover:text-white transition">
+                                {{ $pengaturan->footer_terms }}
+                            </a>
+                        @endif
+
+
+                        @if (!empty($pengaturan->footer_accessibility))
+                            <a href="#" class="hover:text-white transition">
+                                {{ $pengaturan->footer_accessibility }}
+                            </a>
+                        @endif
+
+                    </div>
+
                 </div>
+
             </div>
 
         </div>
 
-        <!-- Copyright -->
-        <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center gap-2 text-[10px] md:text-xs text-gray-400">
-            <p>&copy; {{ date('Y') }} Badan Bank Tanah. Hak Cipta Dilindungi.</p>
-            <div class="flex gap-4">
-                <a href="#" class="hover:text-white transition">Kebijakan Privasi</a>
-                <a href="#" class="hover:text-white transition">Syarat & Ketentuan</a>
-                <a href="#" class="hover:text-white transition">Aksesibilitas</a>
-            </div>
-        </div>
     </footer>
-
+    
     <!-- ========================================================= -->
     <!-- SCRIPTS -->
     <!-- ========================================================= -->

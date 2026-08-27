@@ -32,7 +32,7 @@
                     @enderror
                 </div>
 
-                <!-- Kategori -->
+            <!-- Kategori -->
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-1.5">
                         Kategori <span class="text-red-500">*</span>

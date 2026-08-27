@@ -34,7 +34,6 @@ class HalamanController extends Controller
         );
     }
 
-
     /**
      * Frontend - Pemanfaatan & Kerjasama Usaha
      */
@@ -59,7 +58,6 @@ class HalamanController extends Controller
         );
     }
 
-
     /**
      * Admin - Edit Tentang
      */
@@ -73,7 +71,6 @@ class HalamanController extends Controller
         );
     }
 
-
     /**
      * Admin - Update Tentang
      */
@@ -81,16 +78,22 @@ class HalamanController extends Controller
     {
         $halaman = Halaman::findOrFail(1);
 
-        $request->validate([
+        $validated = $request->validate([
             'judul' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        ]);
 
-        $data = [
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-        ];
+            'profil_lembaga' => 'nullable|string',
+            'visi' => 'nullable|string',
+            'misi' => 'nullable|string',
+            'struktur_organisasi' => 'nullable|string',
+            'landasan_hukum' => 'nullable|string',
+
+            'gambar' => [
+                'nullable',
+                'image',
+                'mimes:jpeg,png,jpg,gif,webp',
+                'max:5120',
+            ],
+        ]);
 
         if ($request->hasFile('gambar')) {
 
@@ -98,17 +101,22 @@ class HalamanController extends Controller
                 Storage::disk('public')->delete($halaman->gambar);
             }
 
-            $data['gambar'] = $request->file('gambar')
+            $validated['gambar'] = $request
+                ->file('gambar')
                 ->store('halaman', 'public');
         }
 
-        $halaman->update($data);
+        /*
+         * Tetap sinkronkan isi lama dengan profil lembaga.
+         */
+        $validated['isi'] = $request->profil_lembaga;
+
+        $halaman->update($validated);
 
         return redirect()
             ->route('admin.halaman.edit.tentang')
             ->with('success', 'Halaman Tentang berhasil diperbarui.');
     }
-
 
     /**
      * Admin - Edit Pemanfaatan & Kerjasama
@@ -123,7 +131,6 @@ class HalamanController extends Controller
         );
     }
 
-
     /**
      * Admin - Update Pemanfaatan & Kerjasama
      */
@@ -131,16 +138,27 @@ class HalamanController extends Controller
     {
         $halaman = Halaman::findOrFail(2);
 
-        $request->validate([
+        $validated = $request->validate([
             'judul' => 'required|string|max:255',
-            'isi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+
+            'tentang_pemanfaatan' => 'nullable|string',
+            'skema_pemanfaatan' => 'nullable|string',
+            'bentuk_kerjasama' => 'nullable|string',
+            'prosedur_tahapan' => 'nullable|string',
+            'persyaratan' => 'nullable|string',
+
+            'gambar' => [
+                'nullable',
+                'image',
+                'mimes:jpeg,png,jpg,gif,webp',
+                'max:5120',
+            ],
         ]);
 
-        $data = [
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-        ];
+        /*
+         * Isi lama tetap dipertahankan sebagai fallback.
+         */
+        $validated['isi'] = $request->tentang_pemanfaatan;
 
         if ($request->hasFile('gambar')) {
 
@@ -148,11 +166,12 @@ class HalamanController extends Controller
                 Storage::disk('public')->delete($halaman->gambar);
             }
 
-            $data['gambar'] = $request->file('gambar')
+            $validated['gambar'] = $request
+                ->file('gambar')
                 ->store('halaman', 'public');
         }
 
-        $halaman->update($data);
+        $halaman->update($validated);
 
         return redirect()
             ->route('admin.halaman.edit.partnership')

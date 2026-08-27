@@ -19,9 +19,22 @@ class AsetTanah extends Model
         'peruntukan',
         'skema',
         'status',
-        'deskripsi',
+        'gambar',
         'lat',
         'lng',
-        'gambar',
+        'deskripsi',
+
+        'sumber_perolehan',
+        'nilai_perkiraan',
+        'tahun_perolehan',
+        'dokumen',
+    ];
+
+    protected $casts = [
+        'lat' => 'decimal:7',
+        'lng' => 'decimal:7',
+        'luas_hektar' => 'decimal:2',
+        'nilai_perkiraan' => 'decimal:2',
+        'dokumen' => 'array',
     ];
 }

@@ -15,5 +15,19 @@ class Halaman extends Model
         'judul',
         'isi',
         'gambar',
+
+        // Tentang
+        'profil_lembaga',
+        'visi',
+        'misi',
+        'struktur_organisasi',
+        'landasan_hukum',
+
+        // Pemanfaatan & Kerjasama
+        'tentang_pemanfaatan',
+        'skema_pemanfaatan',
+        'bentuk_kerjasama',
+        'prosedur_tahapan',
+        'persyaratan',
     ];
 }

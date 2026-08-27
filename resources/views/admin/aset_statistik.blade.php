@@ -4,44 +4,45 @@
 
 @section('content')
 
-<div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto">
 
-    {{-- =====================================================
+        {{-- =====================================================
         HEADER
     ====================================================== --}}
 
-    <div class="mb-5">
+        <div class="mb-5">
 
-        <h1 class="text-2xl font-bold text-gray-900">
-            Aset Persediaan Tanah
-        </h1>
+            <h1 class="text-2xl font-bold text-gray-900">
+                Aset Persediaan Tanah
+            </h1>
 
-        <p class="text-sm text-gray-500 mt-1">
-            Kelola dan pantau informasi persediaan tanah.
-        </p>
+            <p class="text-sm text-gray-500 mt-1">
+                Kelola dan pantau informasi persediaan tanah.
+            </p>
 
-    </div>
+        </div>
 
 
-    {{-- =====================================================
+        {{-- =====================================================
         NAVIGASI ASET
     ====================================================== --}}
 
-    <div class="overflow-x-auto">
-        @include('admin.aset._navigation')
-    </div>
+        <div class="overflow-x-auto">
+            @include('admin.aset._navigation')
+        </div>
 
 
-    {{-- =====================================================
+        {{-- =====================================================
         HEADER STATISTIK
     ====================================================== --}}
 
-    <div class="bg-white rounded-xl border border-gray-200
+        <div class="bg-white rounded-xl border border-gray-200
                 shadow-sm p-6 mb-5">
 
-        <div class="flex items-start gap-4">
+            <div class="flex items-start gap-4">
 
-            <div class="w-12 h-12
+                <div
+                    class="w-12 h-12
                         rounded-xl
                         bg-green-50
                         text-[#006400]
@@ -49,206 +50,215 @@
                         justify-center
                         flex-shrink-0">
 
-                <i class="fas fa-chart-column text-xl"></i>
+                    <i class="fas fa-chart-column text-xl"></i>
 
-            </div>
+                </div>
 
-            <div class="flex-1">
+                <div class="flex-1">
 
-                <h2 class="text-lg font-bold text-gray-900">
-                    Statistik Aset
-                </h2>
+                    <h2 class="text-lg font-bold text-gray-900">
+                        Statistik Aset
+                    </h2>
 
-                <p class="text-sm text-gray-500 mt-1 leading-relaxed">
-                    Ringkasan statistik persediaan tanah berdasarkan
-                    lokasi, luas, peruntukan, dan skema pemanfaatan.
-                </p>
+                    <p class="text-sm text-gray-500 mt-1 leading-relaxed">
+                        Ringkasan statistik persediaan tanah berdasarkan
+                        lokasi, luas, peruntukan, dan skema pemanfaatan.
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
-
-    {{-- =====================================================
+        {{-- =====================================================
         RINGKASAN UTAMA
     ====================================================== --}}
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
 
-        {{-- TOTAL ASET --}}
+            {{-- TOTAL ASET --}}
 
-        <div class="bg-white rounded-xl
+            <div class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm p-5">
 
-            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
 
-                <div>
+                    <div>
 
-                    <p class="text-[10px] font-semibold
+                        <p
+                            class="text-[10px] font-semibold
                               uppercase tracking-wide
                               text-gray-400">
 
-                        Total Aset
+                            Total Aset
 
-                    </p>
+                        </p>
 
-                    <h3 class="text-2xl font-bold
+                        <h3 class="text-2xl font-bold
                                text-gray-900 mt-2">
 
-                        24
+                            {{ $totalAset }}
 
-                    </h3>
+                        </h3>
 
-                    <p class="text-[10px] text-gray-500 mt-1">
-                        Persediaan tanah
-                    </p>
+                        <p class="text-[10px] text-gray-500 mt-1">
+                            Persediaan tanah
+                        </p>
 
-                </div>
+                    </div>
 
-                <div class="w-10 h-10 rounded-lg
+                    <div
+                        class="w-10 h-10 rounded-lg
                             bg-green-50
                             text-[#006400]
                             flex items-center justify-center">
 
-                    <i class="fas fa-database"></i>
+                        <i class="fas fa-database"></i>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
+            {{-- TOTAL LUAS --}}
 
-        {{-- TOTAL LUAS --}}
-
-        <div class="bg-white rounded-xl
+            <div class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm p-5">
 
-            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
 
-                <div>
+                    <div>
 
-                    <p class="text-[10px] font-semibold
+                        <p
+                            class="text-[10px] font-semibold
                               uppercase tracking-wide
                               text-gray-400">
 
-                        Total Luas
+                            Total Luas
 
-                    </p>
+                        </p>
 
-                    <h3 class="text-2xl font-bold
+                        <h3 class="text-2xl font-bold
                                text-gray-900 mt-2">
 
-                        1.250,75
+                            1.250,75
 
-                    </h3>
+                        </h3>
 
-                    <p class="text-[10px] text-gray-500 mt-1">
-                        Hektare
-                    </p>
+                        <p class="text-[10px] text-gray-500 mt-1">
+                            Hektare
+                        </p>
 
-                </div>
+                    </div>
 
-                <div class="w-10 h-10 rounded-lg
+                    <div
+                        class="w-10 h-10 rounded-lg
                             bg-blue-50
                             text-blue-600
                             flex items-center justify-center">
 
-                    <i class="fas fa-vector-square"></i>
+                        <i class="fas fa-vector-square"></i>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
+            {{-- WILAYAH --}}
 
-        {{-- WILAYAH --}}
-
-        <div class="bg-white rounded-xl
+            <div class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm p-5">
 
-            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
 
-                <div>
+                    <div>
 
-                    <p class="text-[10px] font-semibold
+                        <p
+                            class="text-[10px] font-semibold
                               uppercase tracking-wide
                               text-gray-400">
 
-                        Wilayah
+                            Wilayah
 
-                    </p>
+                        </p>
 
-                    <h3 class="text-2xl font-bold
+                        <h3 class="text-2xl font-bold
                                text-gray-900 mt-2">
 
-                        8
+                            {{ $totalProvinsi }}
+                        </h3>
 
-                    </h3>
+                        <p class="text-[10px] text-gray-500 mt-1">
+                            Provinsi
+                        </p>
 
-                    <p class="text-[10px] text-gray-500 mt-1">
-                        Provinsi
-                    </p>
+                    </div>
 
-                </div>
-
-                <div class="w-10 h-10 rounded-lg
+                    <div
+                        class="w-10 h-10 rounded-lg
                             bg-orange-50
                             text-orange-500
                             flex items-center justify-center">
 
-                    <i class="fas fa-map-location-dot"></i>
+                        <i class="fas fa-map-location-dot"></i>
+
+                    </div>
 
                 </div>
 
             </div>
 
-        </div>
 
+            {{-- PERUNTUKAN --}}
 
-        {{-- PERUNTUKAN --}}
-
-        <div class="bg-white rounded-xl
+            <div class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm p-5">
 
-            <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between">
 
-                <div>
+                    <div>
 
-                    <p class="text-[10px] font-semibold
+                        <p
+                            class="text-[10px] font-semibold
                               uppercase tracking-wide
                               text-gray-400">
 
-                        Peruntukan
+                            Peruntukan
 
-                    </p>
+                        </p>
 
-                    <h3 class="text-2xl font-bold
+                        <h3 class="text-2xl font-bold
                                text-gray-900 mt-2">
 
-                        3
+                            {{ $totalPeruntukan }}
 
-                    </h3>
+                        </h3>
 
-                    <p class="text-[10px] text-gray-500 mt-1">
-                        Kategori utama
-                    </p>
+                        <p class="text-[10px] text-gray-500 mt-1">
+                            Kategori utama
+                        </p>
 
-                </div>
+                    </div>
 
-                <div class="w-10 h-10 rounded-lg
+                    <div
+                        class="w-10 h-10 rounded-lg
                             bg-purple-50
                             text-purple-600
                             flex items-center justify-center">
 
-                    <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-layer-group"></i>
+
+                    </div>
 
                 </div>
 
@@ -256,432 +266,180 @@
 
         </div>
 
-    </div>
 
-
-    {{-- =====================================================
+        {{-- =====================================================
         ANALISIS DATA
     ====================================================== --}}
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
 
 
-        {{-- =================================================
+            {{-- =================================================
             BERDASARKAN PERUNTUKAN
         ================================================== --}}
 
-        <div class="bg-white rounded-xl
+            <div
+                class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm overflow-hidden">
 
-            <div class="px-5 py-4
+                <div class="px-5 py-4
                         border-b border-gray-100">
 
-                <h2 class="text-sm font-bold text-gray-900">
-                    Sebaran Berdasarkan Peruntukan
-                </h2>
+                    <h2 class="text-sm font-bold text-gray-900">
+                        Sebaran Berdasarkan Peruntukan
+                    </h2>
 
-                <p class="text-[9px] text-gray-400 mt-1">
-                    Distribusi aset berdasarkan peruntukan tanah.
-                </p>
-
-            </div>
-
-
-            <div class="p-5 space-y-5">
-
-
-                {{-- INDUSTRI --}}
-
-                <div>
-
-                    <div class="flex items-center
-                                justify-between mb-2">
-
-                        <div class="flex items-center gap-2">
-
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-blue-50
-                                         text-blue-600
-                                         flex items-center
-                                         justify-center">
-
-                                <i class="fas fa-industry text-[10px]"></i>
-
-                            </span>
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
-
-                                Industri
-
-                            </span>
-
-                        </div>
-
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
-
-                            10 aset
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-blue-500"
-                             style="width: 42%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        42% dari total aset
+                    <p class="text-[9px] text-gray-400 mt-1">
+                        Distribusi aset berdasarkan peruntukan tanah.
                     </p>
 
                 </div>
 
 
-                {{-- PERTANIAN --}}
+                <div class="p-5 space-y-5">
 
-                <div>
+                    @forelse ($peruntukanStats as $nama => $data)
+                        @php
+                            $persentase = $totalAset > 0 ? round(($data['jumlah'] / $totalAset) * 100) : 0;
 
-                    <div class="flex items-center
-                                justify-between mb-2">
+                            $ikon = match (strtolower($nama)) {
+                                'industri' => 'fa-industry',
+                                'pertanian' => 'fa-wheat-awn',
+                                'perumahan' => 'fa-house',
+                                default => 'fa-layer-group',
+                            };
+                        @endphp
 
-                        <div class="flex items-center gap-2">
+                        <div>
 
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-green-50
-                                         text-green-600
-                                         flex items-center
-                                         justify-center">
+                            <div class="flex items-center justify-between mb-2">
 
-                                <i class="fas fa-wheat-awn text-[10px]"></i>
+                                <div class="flex items-center gap-2">
 
-                            </span>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                                        <i class="fas {{ $ikon }} text-[10px]"></i>
+                                    </span>
 
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
+                                    <span class="text-[10px] font-semibold text-gray-700">
+                                        {{ $nama }}
+                                    </span>
 
-                                Pertanian
+                                </div>
 
-                            </span>
+                                <span class="text-[10px] font-bold text-gray-900">
+                                    {{ $data['jumlah'] }} aset
+                                </span>
 
-                        </div>
+                            </div>
 
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
+                            <div class="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
 
-                            8 aset
+                                <div class="h-full rounded-full bg-blue-500" style="width: {{ min($persentase, 100) }}%">
+                                </div>
 
-                        </span>
+                            </div>
 
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-green-500"
-                             style="width: 33%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        33% dari total aset
-                    </p>
-
-                </div>
-
-
-                {{-- PERUMAHAN --}}
-
-                <div>
-
-                    <div class="flex items-center
-                                justify-between mb-2">
-
-                        <div class="flex items-center gap-2">
-
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-orange-50
-                                         text-orange-500
-                                         flex items-center
-                                         justify-center">
-
-                                <i class="fas fa-house text-[10px]"></i>
-
-                            </span>
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
-
-                                Perumahan
-
-                            </span>
+                            <p class="text-[8px] text-gray-400 mt-1">
+                                {{ $persentase }}% dari total aset ·
+                                {{ number_format($data['luas'], 2, ',', '.') }} Ha
+                            </p>
 
                         </div>
 
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
+                    @empty
 
-                            6 aset
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-orange-500"
-                             style="width: 25%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        25% dari total aset
-                    </p>
+                        <p class="text-center text-sm text-gray-400 py-5">
+                            Belum ada data peruntukan.
+                        </p>
+                    @endforelse
 
                 </div>
 
             </div>
 
-        </div>
 
-
-        {{-- =================================================
+            {{-- =================================================
             BERDASARKAN SKEMA
         ================================================== --}}
 
-        <div class="bg-white rounded-xl
+            <div
+                class="bg-white rounded-xl
                     border border-gray-200
                     shadow-sm overflow-hidden">
 
-            <div class="px-5 py-4
+                <div class="px-5 py-4
                         border-b border-gray-100">
 
-                <h2 class="text-sm font-bold text-gray-900">
-                    Sebaran Berdasarkan Skema
-                </h2>
+                    <h2 class="text-sm font-bold text-gray-900">
+                        Sebaran Berdasarkan Skema
+                    </h2>
 
-                <p class="text-[9px] text-gray-400 mt-1">
-                    Distribusi aset berdasarkan skema pemanfaatan.
-                </p>
-
-            </div>
-
-
-            <div class="p-5 space-y-5">
-
-
-                {{-- SEWA --}}
-
-                <div>
-
-                    <div class="flex items-center
-                                justify-between mb-2">
-
-                        <div class="flex items-center gap-2">
-
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-blue-50
-                                         text-blue-600
-                                         flex items-center
-                                         justify-center">
-
-                                <i class="fas fa-file-contract text-[10px]"></i>
-
-                            </span>
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
-
-                                Sewa
-
-                            </span>
-
-                        </div>
-
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
-
-                            9 aset
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-blue-500"
-                             style="width: 38%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        38% dari total aset
+                    <p class="text-[9px] text-gray-400 mt-1">
+                        Distribusi aset berdasarkan skema pemanfaatan.
                     </p>
 
                 </div>
 
 
-                {{-- KERJASAMA --}}
+                <div class="p-5 space-y-5">
 
-                <div>
+                    @forelse ($skemaStats as $nama => $data)
+                        @php
+                            $persentase = $totalAset > 0 ? round(($data['jumlah'] / $totalAset) * 100) : 0;
 
-                    <div class="flex items-center
-                                justify-between mb-2">
+                            $ikon = match (strtolower($nama)) {
+                                'sewa' => 'fa-file-contract',
+                                'kerjasama', 'kerja sama' => 'fa-handshake',
+                                'pemanfaatan' => 'fa-building',
+                                default => 'fa-file-lines',
+                            };
+                        @endphp
 
-                        <div class="flex items-center gap-2">
+                        <div>
 
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-green-50
-                                         text-green-600
-                                         flex items-center
-                                         justify-center">
+                            <div class="flex items-center justify-between mb-2">
 
-                                <i class="fas fa-handshake text-[10px]"></i>
+                                <div class="flex items-center gap-2">
 
-                            </span>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                                        <i class="fas {{ $ikon }} text-[10px]"></i>
+                                    </span>
 
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
+                                    <span class="text-[10px] font-semibold text-gray-700">
+                                        {{ $nama }}
+                                    </span>
 
-                                Kerjasama
+                                </div>
 
-                            </span>
+                                <span class="text-[10px] font-bold text-gray-900">
+                                    {{ $data['jumlah'] }} aset
+                                </span>
 
-                        </div>
+                            </div>
 
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
+                            <div class="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
 
-                            8 aset
+                                <div class="h-full rounded-full bg-blue-500" style="width: {{ min($persentase, 100) }}%">
+                                </div>
 
-                        </span>
+                            </div>
 
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-green-500"
-                             style="width: 33%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        33% dari total aset
-                    </p>
-
-                </div>
-
-
-                {{-- PEMANFAATAN --}}
-
-                <div>
-
-                    <div class="flex items-center
-                                justify-between mb-2">
-
-                        <div class="flex items-center gap-2">
-
-                            <span class="w-7 h-7
-                                         rounded-lg
-                                         bg-orange-50
-                                         text-orange-500
-                                         flex items-center
-                                         justify-center">
-
-                                <i class="fas fa-building text-[10px]"></i>
-
-                            </span>
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-700">
-
-                                Pemanfaatan
-
-                            </span>
+                            <p class="text-[8px] text-gray-400 mt-1">
+                                {{ $persentase }}% dari total aset ·
+                                {{ number_format($data['luas'], 2, ',', '.') }} Ha
+                            </p>
 
                         </div>
 
-                        <span class="text-[10px]
-                                     font-bold
-                                     text-gray-900">
+                    @empty
 
-                            7 aset
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="w-full h-2
-                                rounded-full
-                                bg-gray-100
-                                overflow-hidden">
-
-                        <div class="h-full
-                                    rounded-full
-                                    bg-orange-500"
-                             style="width: 29%">
-                        </div>
-
-                    </div>
-
-                    <p class="text-[8px] text-gray-400 mt-1">
-                        29% dari total aset
-                    </p>
+                        <p class="text-center text-sm text-gray-400 py-5">
+                            Belum ada data skema pemanfaatan.
+                        </p>
+                    @endforelse
 
                 </div>
 
@@ -689,393 +447,206 @@
 
         </div>
 
-    </div>
 
-
-    {{-- =====================================================
+        {{-- =====================================================
         RINGKASAN WILAYAH
     ====================================================== --}}
 
-    <div class="bg-white rounded-xl
+        <div class="bg-white rounded-xl
                 border border-gray-200
                 shadow-sm overflow-hidden">
 
-        <div class="px-5 py-4
+            <div
+                class="px-5 py-4
                     border-b border-gray-100
                     flex items-center
                     justify-between">
 
-            <div>
+                <div>
 
-                <h2 class="text-sm font-bold text-gray-900">
-                    Ringkasan Sebaran Wilayah
-                </h2>
+                    <h2 class="text-sm font-bold text-gray-900">
+                        Ringkasan Sebaran Wilayah
+                    </h2>
 
-                <p class="text-[9px] text-gray-400 mt-1">
-                    Ringkasan jumlah aset berdasarkan wilayah.
-                </p>
+                    <p class="text-[9px] text-gray-400 mt-1">
+                        Ringkasan jumlah aset berdasarkan wilayah.
+                    </p>
 
-            </div>
+                </div>
 
-            <a href="{{ route('admin.aset.wilayah') }}"
-               class="text-[9px]
+                <a href="{{ route('admin.aset.wilayah') }}"
+                    class="text-[9px]
                       font-semibold
                       text-[#006400]
                       hover:underline">
 
-                Lihat Wilayah
+                    Lihat Wilayah
 
-                <i class="fas fa-arrow-right ml-1"></i>
+                    <i class="fas fa-arrow-right ml-1"></i>
 
-            </a>
+                </a>
 
-        </div>
+            </div>
 
 
-        <div class="overflow-x-auto">
+            <div class="overflow-x-auto">
 
-            <table class="w-full text-left">
+                <table class="w-full text-left">
 
-                <thead class="bg-gray-50
+                    <thead class="bg-gray-50
                               border-b border-gray-200">
 
-                    <tr>
+                        <tr>
 
-                        <th class="px-5 py-3
+                            <th
+                                class="px-5 py-3
                                    text-[9px]
                                    font-semibold
                                    uppercase
                                    tracking-wide
                                    text-gray-500">
 
-                            Provinsi
+                                Provinsi
 
-                        </th>
+                            </th>
 
-                        <th class="px-5 py-3
+                            <th
+                                class="px-5 py-3
                                    text-[9px]
                                    font-semibold
                                    uppercase
                                    tracking-wide
                                    text-gray-500">
 
-                            Jumlah Aset
+                                Jumlah Aset
 
-                        </th>
+                            </th>
 
-                        <th class="px-5 py-3
+                            <th
+                                class="px-5 py-3
                                    text-[9px]
                                    font-semibold
                                    uppercase
                                    tracking-wide
                                    text-gray-500">
 
-                            Total Luas
+                                Total Luas
 
-                        </th>
+                            </th>
 
-                        <th class="px-5 py-3
+                            <th
+                                class="px-5 py-3
                                    text-[9px]
                                    font-semibold
                                    uppercase
                                    tracking-wide
                                    text-gray-500">
 
-                            Persentase
+                                Persentase
 
-                        </th>
+                            </th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
+                    </thead>
 
 
-                <tbody class="divide-y divide-gray-100">
+                    <tbody class="divide-y divide-gray-100">
 
-                    <tr class="hover:bg-gray-50 transition">
+                        @forelse ($wilayahStats as $provinsi => $data)
+                            <tr class="hover:bg-gray-50 transition">
 
-                        <td class="px-5 py-4">
+                                <td class="px-5 py-4">
 
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-800">
+                                    <span class="text-[10px] font-semibold text-gray-800">
+                                        {{ $provinsi }}
+                                    </span>
 
-                                Jawa Tengah
+                                </td>
 
-                            </span>
+                                <td class="px-5 py-4 text-[10px] text-gray-600">
 
-                        </td>
+                                    {{ $data['jumlah'] }} aset
 
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
+                                </td>
 
-                            10 aset
+                                <td class="px-5 py-4 text-[10px] text-gray-600">
 
-                        </td>
+                                    {{ number_format($data['luas'], 2, ',', '.') }} Ha
 
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
+                                </td>
 
-                            580,75 Ha
+                                <td class="px-5 py-4">
 
-                        </td>
+                                    <div class="flex items-center gap-2">
 
-                        <td class="px-5 py-4">
+                                        <div class="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
 
-                            <div class="flex items-center gap-2">
+                                            <div class="h-full bg-[#006400] rounded-full"
+                                                style="width: {{ min($data['persentase'], 100) }}%"></div>
 
-                                <div class="w-24 h-1.5
-                                            bg-gray-100
-                                            rounded-full
-                                            overflow-hidden">
+                                        </div>
 
-                                    <div class="h-full
-                                                bg-[#006400]
-                                                rounded-full"
-                                         style="width:42%">
+                                        <span class="text-[9px] font-semibold text-gray-600">
+                                            {{ $data['persentase'] }}%
+                                        </span>
+
                                     </div>
 
-                                </div>
+                                </td>
 
-                                <span class="text-[9px]
-                                             font-semibold
-                                             text-gray-600">
+                            </tr>
 
-                                    42%
+                        @empty
 
-                                </span>
+                            <tr>
 
-                            </div>
+                                <td colspan="4" class="px-5 py-10 text-center">
 
-                        </td>
+                                    <p class="text-sm text-gray-400">
+                                        Belum ada data wilayah.
+                                    </p>
 
-                    </tr>
+                                </td>
 
+                            </tr>
+                        @endforelse
 
-                    <tr class="hover:bg-gray-50 transition">
+                    </tbody>
 
-                        <td class="px-5 py-4">
+                </table>
 
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-800">
+            </div>
 
-                                Sumatera Selatan
 
-                            </span>
+            {{-- FOOTER --}}
 
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            6 aset
-
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            320,50 Ha
-
-                        </td>
-
-                        <td class="px-5 py-4">
-
-                            <div class="flex items-center gap-2">
-
-                                <div class="w-24 h-1.5
-                                            bg-gray-100
-                                            rounded-full
-                                            overflow-hidden">
-
-                                    <div class="h-full
-                                                bg-[#006400]
-                                                rounded-full"
-                                         style="width:25%">
-                                    </div>
-
-                                </div>
-
-                                <span class="text-[9px]
-                                             font-semibold
-                                             text-gray-600">
-
-                                    25%
-
-                                </span>
-
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-
-                    <tr class="hover:bg-gray-50 transition">
-
-                        <td class="px-5 py-4">
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-800">
-
-                                Papua Selatan
-
-                            </span>
-
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            4 aset
-
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            225,00 Ha
-
-                        </td>
-
-                        <td class="px-5 py-4">
-
-                            <div class="flex items-center gap-2">
-
-                                <div class="w-24 h-1.5
-                                            bg-gray-100
-                                            rounded-full
-                                            overflow-hidden">
-
-                                    <div class="h-full
-                                                bg-[#006400]
-                                                rounded-full"
-                                         style="width:17%">
-                                    </div>
-
-                                </div>
-
-                                <span class="text-[9px]
-                                             font-semibold
-                                             text-gray-600">
-
-                                    17%
-
-                                </span>
-
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-
-                    <tr class="hover:bg-gray-50 transition">
-
-                        <td class="px-5 py-4">
-
-                            <span class="text-[10px]
-                                         font-semibold
-                                         text-gray-800">
-
-                                Wilayah Lainnya
-
-                            </span>
-
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            4 aset
-
-                        </td>
-
-                        <td class="px-5 py-4
-                                   text-[10px]
-                                   text-gray-600">
-
-                            124,50 Ha
-
-                        </td>
-
-                        <td class="px-5 py-4">
-
-                            <div class="flex items-center gap-2">
-
-                                <div class="w-24 h-1.5
-                                            bg-gray-100
-                                            rounded-full
-                                            overflow-hidden">
-
-                                    <div class="h-full
-                                                bg-[#006400]
-                                                rounded-full"
-                                         style="width:16%">
-                                    </div>
-
-                                </div>
-
-                                <span class="text-[9px]
-                                             font-semibold
-                                             text-gray-600">
-
-                                    16%
-
-                                </span>
-
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        {{-- FOOTER --}}
-
-        <div class="px-5 py-3
+            <div
+                class="px-5 py-3
                     border-t border-gray-100
                     flex items-center
                     justify-between">
 
-            <p class="text-[8px] text-gray-400">
+                <p class="text-[8px] text-gray-400">
+                    Statistik dihitung berdasarkan data aset yang tersimpan dalam sistem.
+                </p>
 
-                Data statistik menggunakan data dummy
-                untuk kebutuhan antarmuka.
-
-            </p>
-
-            <a href="{{ route('admin.aset.index') }}"
-               class="text-[9px]
+                <a href="{{ route('admin.aset.index') }}"
+                    class="text-[9px]
                       font-semibold
                       text-[#006400]
                       hover:underline">
 
-                Kelola seluruh aset
+                    Kelola seluruh aset
 
-                <i class="fas fa-arrow-right ml-1"></i>
+                    <i class="fas fa-arrow-right ml-1"></i>
 
-            </a>
+                </a>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 @endsection
