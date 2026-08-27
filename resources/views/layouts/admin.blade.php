@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'CMS Admin Panel - Badan Bank Tanah')</title>
 
-    @vite(['resources/css/app.css', 'resources/css/admin-dark-mode.css', 'resources/js/app.js', 'resources/js/admin-dark-mode.js'])
+    @vite(['resources/css/app.css', 'resources/css/admin-dark-mode.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -183,10 +183,10 @@
     <!-- ========================================================= -->
     <!-- LOADING STATE -->
     <!-- ========================================================= -->
-    <div id="adminLoading" class="fixed inset-0 bg-white/80 backdrop-blur-sm z-[99999] flex items-center justify-center hidden">
+    <div id="adminLoading" class="fixed inset-0 bg-white/60 backdrop-blur-sm z-[99999] flex items-center justify-center hidden">
         <div class="text-center">
-            <div class="w-16 h-16 border-4 border-[#006400] border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <p class="text-sm text-gray-500 mt-4">Memuat data...</p>
+            <div class="w-12 h-12 border-4 border-[#006400] border-t-transparent rounded-full animate-spin mx-auto"></div>
+            <p class="text-sm text-gray-500 mt-3">Memuat data...</p>
         </div>
     </div>
 
@@ -617,20 +617,18 @@
                     <p class="text-xs font-bold text-gray-900 truncate">{{ auth()->user()->name }}</p>
                     <p class="text-[9px] text-gray-500 capitalize flex items-center gap-1.5">
                         <span class="inline-block w-1.5 h-1.5 rounded-full
-                            {{ $role == 'super_admin' ? 'bg-purple-500' :
-                               ($role == 'admin' ? 'bg-blue-500' :
-                               ($role == 'editor' ? 'bg-yellow-500' :
-                               ($role == 'publisher' ? 'bg-green-500' : 'bg-gray-500'))) }}">
+                            {{ auth()->user()->role == 'super_admin' ? 'bg-purple-500' :
+                               (auth()->user()->role == 'admin' ? 'bg-blue-500' :
+                               (auth()->user()->role == 'editor' ? 'bg-yellow-500' :
+                               (auth()->user()->role == 'publisher' ? 'bg-green-500' : 'bg-gray-500'))) }}">
                         </span>
-                        {{ $roleLabel }}
+                        {{ ucfirst(str_replace('_', ' ', auth()->user()->role)) }}
                     </p>
                 </div>
 
                 <form method="POST" action="{{ route('logout') }}" class="flex-shrink-0">
                     @csrf
-                    <button type="submit"
-                        class="text-gray-400 hover:text-red-600 transition p-1.5 rounded-lg hover:bg-red-50"
-                        title="Logout">
+                    <button type="submit" class="text-gray-400 hover:text-red-600 transition p-1.5 rounded-lg hover:bg-red-50">
                         <i class="fas fa-sign-out-alt text-sm"></i>
                     </button>
                 </form>
@@ -735,7 +733,7 @@
                     <span class="absolute right-3 top-1/2 -translate-y-1/2 text-[8px] text-gray-400 bg-gray-200 px-1.5 py-0.5 rounded hidden xl:block">Ctrl+K</span>
                 </div>
 
-                <!-- Dark Mode -->
+                <!-- Dark Mode Button -->
                 <button id="darkModeButton" type="button"
                     class="text-gray-400 hover:text-gray-700 transition w-8 h-8 rounded-lg hover:bg-gray-100 flex items-center justify-center"
                     title="Toggle Dark Mode">
@@ -832,7 +830,7 @@
                     </div>
                 </div>
 
-                <!-- User Avatar -->
+                <!-- User Avatar (Header) -->
                 @if (auth()->user()->foto)
                     <img src="{{ asset('storage/' . auth()->user()->foto) }}"
                         class="w-8 h-8 rounded-full object-cover border-2 border-gray-200 hidden sm:block"

@@ -15,7 +15,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'foto',
+        'foto', // <-- PASTIKAN ADA
     ];
 
     protected $hidden = [
@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Helper untuk mendapatkan URL foto
+    public function getFotoUrlAttribute()
+    {
+        if ($this->foto) {
+            return asset('storage/' . $this->foto);
+        }
+        return null;
+    }
 }

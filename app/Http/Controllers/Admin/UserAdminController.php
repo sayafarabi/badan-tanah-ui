@@ -23,17 +23,19 @@ class UserAdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
-            'role' => 'required|in:super_admin,admin,publisher,editor',
+            'role' => 'required|in:super_admin,admin,editor,publisher',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $data = $request->all();
 
+        // Upload foto
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('users', 'public');
+            $path = $request->file('foto')->store('users', 'public');
+            $data['foto'] = $path;
         }
 
         User::create([
@@ -56,43 +58,51 @@ class UserAdminController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'role' => 'required|in:super_admin,admin,publisher,editor',
+            'role' => 'required|in:super_admin,admin,editor,publisher',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+        ];
 
+        // Upload foto baru
         if ($request->hasFile('foto')) {
+            // Hapus foto lama
             if ($user->foto) {
-                Storage::delete('public/' . $user->foto);
+                Storage::disk('public')->delete($user->foto);
             }
-            $data['foto'] = $request->file('foto')->store('users', 'public');
+            $path = $request->file('foto')->store('users', 'public');
+            $data['foto'] = $path;
         }
 
-        $user->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'role' => $data['role'],
-            'foto' => $data['foto'] ?? $user->foto,
-        ]);
-
+        // Update password jika diisi
         if ($request->filled('password')) {
-            $user->update(['password' => bcrypt($request->password)]);
+            $data['password'] = bcrypt($request->password);
         }
 
-        return redirect()->route('admin.user.index')->with('success', 'User berhasil diubah!');
+        $user->update($data);
+
+        return redirect()->route('admin.user.index')->with('success', 'User berhasil diupdate!');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        
+        // Hapus foto
         if ($user->foto) {
-            Storage::delete('public/' . $user->foto);
+            Storage::disk('public')->delete($user->foto);
         }
+        
         $user->delete();
+        
         return redirect()->route('admin.user.index')->with('success', 'User berhasil dihapus!');
     }
 
@@ -100,7 +110,7 @@ class UserAdminController extends Controller
     {
         $user = User::findOrFail($id);
         $request->validate([
-            'role' => 'required|in:super_admin,admin,publisher,editor',
+            'role' => 'required|in:super_admin,admin,editor,publisher',
         ]);
 
         $user->role = $request->role;

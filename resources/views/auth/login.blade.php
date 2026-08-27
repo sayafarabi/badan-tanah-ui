@@ -2,19 +2,21 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login - Badan Bank Tanah</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts - Load lebih cepat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome - Load dari CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         /* =========================================================
-           RESET & BASE
+           RESET & BASE - Ringan
         ========================================================= */
         * {
             margin: 0;
@@ -25,8 +27,6 @@
         html, body {
             height: 100%;
             overflow: hidden;
-            overscroll-behavior: none;
-            touch-action: manipulation;
         }
 
         body {
@@ -35,119 +35,24 @@
             align-items: center;
             justify-content: center;
             padding: 16px;
-            position: relative;
             background: #f0fdf4;
             min-height: 100vh;
-            min-height: 100dvh;
         }
 
         /* =========================================================
-           ANIMATED BACKGROUND - CERAH
+           BACKGROUND - Sederhana, Tanpa Animasi Berat
         ========================================================= */
         .bg-container {
             position: fixed;
             inset: 0;
             z-index: 0;
-            overflow: hidden;
             pointer-events: none;
         }
 
-        /* Gradient Base - Cerah */
         .bg-gradient-base {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 30%, #fef3c7 60%, #f0fdf4 100%);
-        }
-
-        /* Gradient Orbs - Warna Cerah */
-        .bg-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: orbFloat 20s ease-in-out infinite alternate;
-        }
-
-        .bg-orb-1 {
-            width: 500px;
-            height: 500px;
-            top: -150px;
-            right: -100px;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.05));
-            animation-duration: 25s;
-            animation-delay: 0s;
-        }
-
-        .bg-orb-2 {
-            width: 400px;
-            height: 400px;
-            bottom: -100px;
-            left: -100px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.2), rgba(251, 191, 36, 0.05));
-            animation-duration: 30s;
-            animation-delay: 3s;
-        }
-
-        .bg-orb-3 {
-            width: 300px;
-            height: 300px;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15), transparent);
-            animation-duration: 20s;
-            animation-delay: 5s;
-        }
-
-        .bg-orb-4 {
-            width: 350px;
-            height: 350px;
-            top: 15%;
-            right: 15%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.12), transparent);
-            animation-duration: 35s;
-            animation-delay: 7s;
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -40px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(10px, -10px) scale(1.05); }
-        }
-
-        /* Grid Pattern Halus */
-        .bg-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(0, 100, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 100, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.6;
-        }
-
-        /* Decorative Line */
-        .bg-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.08), transparent);
-            height: 2px;
-            width: 80%;
-            top: 25%;
-            left: 10%;
-            animation: linePulse 8s ease-in-out infinite alternate;
-        }
-
-        .bg-line-2 {
-            top: 75%;
-            left: 10%;
-            animation-delay: 2s;
-            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.08), transparent);
-        }
-
-        @keyframes linePulse {
-            0% { opacity: 0.2; transform: scaleX(0.8); }
-            100% { opacity: 0.6; transform: scaleX(1); }
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #fef3c7 100%);
         }
 
         /* =========================================================
@@ -158,16 +63,13 @@
             z-index: 1;
             width: 100%;
             max-width: 400px;
-            animation: fadeUp 0.6s ease forwards;
-            max-height: 98vh;
-            max-height: 98dvh;
-            overflow: hidden;
+            animation: fadeUp 0.3s ease forwards;
         }
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(24px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -176,32 +78,23 @@
         }
 
         /* =========================================================
-           LOGO HEADER
+           LOGO
         ========================================================= */
         .login-header {
             text-align: center;
             margin-bottom: 24px;
         }
 
-        .login-header .logo-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2px;
-        }
-
         .login-header .logo-wrap img {
             height: 64px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 2px 12px rgba(0, 100, 0, 0.08));
         }
 
         .login-header .title {
             font-size: 20px;
             font-weight: 700;
             color: #0f172a;
-            letter-spacing: -0.5px;
             margin-top: 8px;
         }
 
@@ -214,7 +107,7 @@
         .login-header .divider-line {
             width: 36px;
             height: 3px;
-            background: linear-gradient(90deg, #22c55e, #16a34a);
+            background: #16a34a;
             border-radius: 10px;
             margin: 10px auto 0;
         }
@@ -223,63 +116,13 @@
            LOGIN CARD
         ========================================================= */
         .login-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 16px;
-            padding: 28px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 4px 24px rgba(0, 0, 0, 0.04),
-                0 1px 2px rgba(0, 0, 0, 0.02);
-        }
-
-        /* =========================================================
-           ALERT
-        ========================================================= */
-        .alert {
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-size: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 16px;
-            border: 1px solid;
-        }
-
-        .alert-success {
-            background: rgba(34, 197, 94, 0.08);
-            border-color: rgba(34, 197, 94, 0.15);
-            color: #166534;
-        }
-
-        .alert-success i {
-            color: #22c55e;
-            margin-top: 1px;
-            font-size: 13px;
-        }
-
-        .alert-error {
-            background: rgba(239, 68, 68, 0.06);
-            border-color: rgba(239, 68, 68, 0.12);
-            color: #991b1b;
-        }
-
-        .alert-error i {
-            color: #ef4444;
-            margin-top: 1px;
-            font-size: 13px;
-        }
-
-        .alert-error .alert-title {
-            font-weight: 600;
-            font-size: 12px;
-        }
-
-        .alert-error .alert-message {
-            font-size: 11px;
-            opacity: 0.8;
+            padding: 28px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         }
 
         /* =========================================================
@@ -309,25 +152,25 @@
             color: #94a3b8;
             font-size: 13px;
             pointer-events: none;
-            transition: color 0.2s ease;
         }
 
         .form-group .input-wrap input {
             width: 100%;
-            padding: 11px 12px 11px 40px;
+            padding: 10px 12px 10px 38px;
             border: 1.5px solid #e2e8f0;
             border-radius: 10px;
             font-size: 13px;
             color: #0f172a;
-            background: rgba(255, 255, 255, 0.8);
-            transition: all 0.25s ease;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.15s ease;
             font-family: 'Inter', sans-serif;
         }
 
         .form-group .input-wrap input:focus {
             border-color: #22c55e;
             background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.08);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08);
+            outline: none;
         }
 
         .form-group .input-wrap input::placeholder {
@@ -347,7 +190,7 @@
             cursor: pointer;
             font-size: 13px;
             padding: 4px;
-            transition: color 0.2s ease;
+            transition: color 0.15s ease;
         }
 
         .form-group .input-wrap .toggle-password:hover {
@@ -386,9 +229,7 @@
         .form-footer .remember-me input[type="checkbox"] {
             width: 14px;
             height: 14px;
-            accent-color: #22c55e;
-            border-radius: 4px;
-            border: 1.5px solid #cbd5e1;
+            accent-color: #16a34a;
             cursor: pointer;
         }
 
@@ -397,7 +238,7 @@
             color: #16a34a;
             font-weight: 500;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: color 0.15s ease;
         }
 
         .form-footer .forgot-link:hover {
@@ -411,28 +252,72 @@
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: #16a34a;
             color: #ffffff;
             border: none;
             border-radius: 10px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            transition: all 0.2s ease;
             font-family: 'Inter', sans-serif;
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.3);
+            background: #15803d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(22, 163, 74, 0.25);
         }
 
         .btn-submit:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
+        }
+
+        /* =========================================================
+           ALERT
+        ========================================================= */
+        .alert {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 16px;
+            border: 1px solid;
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.15);
+            color: #166534;
+        }
+
+        .alert-success i {
+            color: #22c55e;
+            font-size: 13px;
+            margin-top: 1px;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.06);
+            border-color: rgba(239, 68, 68, 0.12);
+            color: #991b1b;
+        }
+
+        .alert-error i {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 1px;
+        }
+
+        .alert-error .alert-title {
+            font-weight: 600;
+        }
+
+        .alert-error .alert-message {
+            font-size: 11px;
+            opacity: 0.85;
         }
 
         /* =========================================================
@@ -455,9 +340,8 @@
             font-size: 9px;
             color: #94a3b8;
             font-weight: 600;
-            white-space: nowrap;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* =========================================================
@@ -478,13 +362,13 @@
         }
 
         .login-footer p i {
-            color: #22c55e;
+            color: #16a34a;
             opacity: 0.6;
             font-size: 11px;
         }
 
         /* =========================================================
-           RESPONSIVE - NO SCROLL
+           RESPONSIVE
         ========================================================= */
         @media (max-width: 480px) {
             body {
@@ -502,67 +386,30 @@
 
             .login-header .title {
                 font-size: 17px;
-                margin-top: 6px;
             }
 
             .login-header .subtitle {
                 font-size: 12px;
             }
 
-            .login-header .divider-line {
-                width: 30px;
-                margin-top: 8px;
-            }
-
-            .login-header {
-                margin-bottom: 18px;
-            }
-
             .form-group .input-wrap input {
-                padding: 10px 10px 10px 36px;
+                padding: 9px 10px 9px 34px;
                 font-size: 12px;
-            }
-
-            .form-group .input-wrap .input-icon {
-                left: 10px;
-                font-size: 12px;
-            }
-
-            .form-footer {
-                margin-bottom: 14px;
             }
 
             .btn-submit {
                 padding: 11px;
                 font-size: 12px;
             }
-
-            .login-wrapper {
-                max-width: 100%;
-            }
-
-            .bg-orb-1 {
-                width: 300px;
-                height: 300px;
-                top: -100px;
-                right: -50px;
-            }
-
-            .bg-orb-2 {
-                width: 250px;
-                height: 250px;
-                bottom: -50px;
-                left: -50px;
-            }
         }
 
-        @media (max-height: 700px) {
+        @media (max-height: 650px) {
             body {
                 padding: 10px;
             }
 
             .login-header .logo-wrap img {
-                height: 42px;
+                height: 40px;
             }
 
             .login-header .title {
@@ -575,11 +422,11 @@
             }
 
             .login-header {
-                margin-bottom: 14px;
+                margin-bottom: 16px;
             }
 
             .login-card {
-                padding: 18px 16px;
+                padding: 16px 14px;
             }
 
             .form-group {
@@ -587,7 +434,7 @@
             }
 
             .form-group .input-wrap input {
-                padding: 9px 10px 9px 36px;
+                padding: 8px 10px 8px 34px;
                 font-size: 12px;
             }
 
@@ -596,61 +443,8 @@
             }
 
             .btn-submit {
-                padding: 10px;
+                padding: 9px;
                 font-size: 12px;
-            }
-
-            .divider {
-                margin: 12px 0 10px;
-            }
-
-            .login-footer {
-                margin-top: 6px;
-            }
-
-            .login-footer p {
-                font-size: 10px;
-            }
-        }
-
-        @media (max-height: 600px) {
-            .login-header .logo-wrap img {
-                height: 36px;
-            }
-
-            .login-header .title {
-                font-size: 14px;
-            }
-
-            .login-header .subtitle {
-                font-size: 10px;
-            }
-
-            .login-header {
-                margin-bottom: 10px;
-            }
-
-            .login-card {
-                padding: 14px 14px;
-                border-radius: 12px;
-            }
-
-            .form-group {
-                margin-bottom: 8px;
-            }
-
-            .form-group .input-wrap input {
-                padding: 8px 8px 8px 34px;
-                font-size: 11px;
-            }
-
-            .form-footer {
-                margin-bottom: 10px;
-            }
-
-            .btn-submit {
-                padding: 8px;
-                font-size: 11px;
             }
 
             .alert {
@@ -659,30 +453,13 @@
                 margin-bottom: 10px;
             }
         }
-
-        /* Prevent scroll on all devices */
-        @media (max-width: 480px) and (max-height: 700px) {
-            .login-wrapper {
-                max-height: 100vh;
-                max-height: 100dvh;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- ========================================================= -->
-    <!-- ANIMATED BACKGROUND -->
-    <!-- ========================================================= -->
+    <!-- Background Sederhana -->
     <div class="bg-container">
         <div class="bg-gradient-base"></div>
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-        <div class="bg-orb bg-orb-3"></div>
-        <div class="bg-orb bg-orb-4"></div>
-        <div class="bg-grid"></div>
-        <div class="bg-line"></div>
-        <div class="bg-line bg-line-2"></div>
     </div>
 
     <!-- ========================================================= -->
@@ -690,7 +467,7 @@
     <!-- ========================================================= -->
     <div class="login-wrapper">
 
-        <!-- Header - Hanya Logo -->
+        <!-- Header -->
         <div class="login-header">
             <div class="logo-wrap">
                 <img src="{{ asset('images/Logo-badan-bank-tanah.png') }}" alt="Badan Bank Tanah">
@@ -818,13 +595,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('email')?.focus();
         });
-
-        // Prevent scroll on touch devices
-        document.addEventListener('touchmove', function(e) {
-            if (e.target.closest('.login-wrapper')) {
-                // Allow scroll inside wrapper if needed, but wrapper has overflow:hidden
-            }
-        }, { passive: true });
     </script>
 
 </body>
