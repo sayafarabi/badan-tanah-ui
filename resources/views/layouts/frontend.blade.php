@@ -634,7 +634,7 @@
             <!-- Kolom 1 -->
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="flex items-center justify-center w-12 h-12 rounded">
+                    <div class="flex items-center justify-center w-13 h-13 rounded">
                         <img src="{{ asset('images/Logo-badan-bank-tanah.png') }}" alt="Logo"
                             class="w-full h-full object-contain">
                     </div>
