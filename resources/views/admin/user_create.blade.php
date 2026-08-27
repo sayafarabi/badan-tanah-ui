@@ -32,10 +32,9 @@
                 <label class="block text-sm font-semibold mb-1">Role <span class="text-red-500">*</span></label>
                 <select name="role" class="w-full border-gray-300 rounded-lg p-3 text-sm focus:ring-[#006400]" required>
                     <option value="super_admin">Super Admin</option>
-                    <option value="admin">Admin</option>
+                    <option value="admin" selected>Admin</option>
                     <option value="publisher">Publisher</option>
                     <option value="editor">Editor</option>
-                    <option value="staff">Staff</option>
                 </select>
             </div>
             

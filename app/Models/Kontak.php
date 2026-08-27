@@ -9,7 +9,8 @@ class Kontak extends Model
 {
     use HasFactory;
 
-    protected $table = 'kontaks';
+    // PERBAIKI: Gunakan 'kontak' (singular) sesuai tabel di database
+    protected $table = 'kontak';
 
     protected $fillable = [
         'nama',

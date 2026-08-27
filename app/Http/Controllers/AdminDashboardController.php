@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AsetTanah;
-use App\Models\Berita;
+use App\Models\Berita; // <-- TAMBAHKAN INI
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
@@ -14,7 +14,7 @@ class AdminDashboardController extends Controller
         $totalAset = AsetTanah::count();
         $totalLuas = AsetTanah::sum('luas_hektar');
         $totalBerita = Berita::count();
-        $totalPengunjung = 124530; // Placeholder, nanti bisa dihubungkan ke tracking
+        $totalPengunjung = 124530; // Placeholder
 
         // Data aset terbaru untuk tabel
         $asets = AsetTanah::latest()->take(5)->get();

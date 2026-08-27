@@ -12,10 +12,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $asets = AsetTanah::latest()->take(9)->get();
-        $berita = Berita::latest()->take(3)->get();
+        $asets = AsetTanah::latest()->take(3)->get();
+        $berita = Berita::where('status', 'Dipublikasikan')->latest()->take(3)->get();
         $menuNavigasi = MenuNavigasi::where('status', 'Aktif')->get();
         $pengaturan = PengaturanWebsite::first();
+
+        // Pisahkan menu utama dan menu lainnya
+        $mainMenus = $menuNavigasi->filter(function($menu) {
+            return !in_array($menu->nama, ['FAQ', 'Karier', 'Kontak']);
+        });
+
+        $otherMenus = $menuNavigasi->filter(function($menu) {
+            return in_array($menu->nama, ['FAQ', 'Karier', 'Kontak']);
+        });
 
         if (!$pengaturan) {
             $pengaturan = (object) [
@@ -28,6 +37,6 @@ class HomeController extends Controller
             ];
         }
 
-        return view('frontend.home', compact('asets', 'berita', 'menuNavigasi', 'pengaturan'));
+        return view('frontend.home', compact('asets', 'berita', 'menuNavigasi', 'pengaturan', 'mainMenus', 'otherMenus'));
     }
 }

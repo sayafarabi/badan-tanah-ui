@@ -23,7 +23,7 @@
         </thead>
         <tbody class="divide-y-2 divide-gray-200">
             @foreach ($users as $user)
-            <tr class="hover:bg-gray-50">
+            <tr class="hover:bg-gray-100 hover:text-gray-900 transition">
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
                         @if ($user->foto)
@@ -43,15 +43,14 @@
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex gap-2">
-                        <!-- Form untuk update role -->
+                        <!-- Form untuk update role (TANPA OPSI STAFF) -->
                         <form action="{{ route('admin.user.quickUpdateRole', $user->id) }}" method="POST" class="inline-flex items-center gap-2">
                             @csrf
                             @method('PUT')
                             <select name="role" class="border border-gray-300 rounded px-2 py-1 text-xs" onchange="this.form.submit()">
-                                <option value="staff" {{ $user->role == 'staff' ? 'selected' : '' }}>Staff</option>
+                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="editor" {{ $user->role == 'editor' ? 'selected' : '' }}>Editor</option>
                                 <option value="publisher" {{ $user->role == 'publisher' ? 'selected' : '' }}>Publisher</option>
-                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="super_admin" {{ $user->role == 'super_admin' ? 'selected' : '' }}>Super Admin</option>
                             </select>
                         </form>

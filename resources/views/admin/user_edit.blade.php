@@ -36,7 +36,6 @@
                     <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                     <option value="publisher" {{ $user->role == 'publisher' ? 'selected' : '' }}>Publisher</option>
                     <option value="editor" {{ $user->role == 'editor' ? 'selected' : '' }}>Editor</option>
-                    <option value="staff" {{ $user->role == 'staff' ? 'selected' : '' }}>Staff</option>
                 </select>
             </div>
             

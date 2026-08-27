@@ -26,7 +26,7 @@ class UserAdminController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
-            'role' => 'required',
+            'role' => 'required|in:super_admin,admin,publisher,editor',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -59,7 +59,7 @@ class UserAdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
-            'role' => 'required',
+            'role' => 'required|in:super_admin,admin,publisher,editor',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -100,7 +100,7 @@ class UserAdminController extends Controller
     {
         $user = User::findOrFail($id);
         $request->validate([
-            'role' => 'required|in:super_admin,admin,publisher,editor,staff',
+            'role' => 'required|in:super_admin,admin,publisher,editor',
         ]);
 
         $user->role = $request->role;

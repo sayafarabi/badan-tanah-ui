@@ -18,5 +18,22 @@ class PengaturanWebsite extends Model
         'tombol_link',
         'warna_utama',
         'warna_sekunder',
+        'nama_website',
+        'deskripsi_website',
+        'logo',
+        'google_analytics',
+        'kimi_api_key',
+        'qr_enabled',
+        'maintenance_mode',
+        'meta_title_default',
+        'meta_description_default',
+        'keywords',
+        'timezone',
+        'bahasa',
+    ];
+
+    protected $casts = [
+        'qr_enabled' => 'boolean',
+        'maintenance_mode' => 'boolean',
     ];
 }

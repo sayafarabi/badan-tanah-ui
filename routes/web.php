@@ -22,6 +22,11 @@ use App\Http\Controllers\Admin\WebsiteHalamanController;
 use App\Http\Controllers\Admin\MenuNavigasiController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\AsetSubMenuController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\ProyekInvestasiController;
+use App\Http\Controllers\Admin\DokumenKerjasamaController;
+use App\Http\Controllers\Admin\IntegrasiController;
+use App\Http\Controllers\Admin\PengaturanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // ================= FRONTEND (PUBLIK) =================
@@ -57,6 +62,10 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 // Halaman Karier
 Route::get('/karier', [KarierController::class, 'index'])->name('karier');
 
+// Download Dokumen (Frontend)
+Route::get('/dokumen/download/{id}', [DokumenKerjasamaController::class, 'download'])->name('dokumen.download');
+
+
 // ================= ADMIN (HANYA BISA DIAKSES JIKA LOGIN) =================
 
 // Halaman Admin Dashboard
@@ -76,7 +85,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/aset/{id}', [AsetAdminController::class, 'destroy'])->name('aset.destroy');
 });
 
-// Halaman Admin Sub-Menu Aset Persediaan Tanah (TANPA DOBEL)
+// Halaman Admin Sub-Menu Aset Persediaan Tanah
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/aset/peta', [AsetSubMenuController::class, 'peta'])->name('aset.peta');
     Route::get('/aset/profil', [AsetSubMenuController::class, 'profil'])->name('aset.profil');
@@ -88,14 +97,79 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/aset/statistik', [AsetSubMenuController::class, 'statistik'])->name('aset.statistik');
 });
 
-// Halaman Admin Berita (CRUD Lengkap)
+// =========================================================
+// HALAMAN ADMIN BERITA (CRUD + APPROVAL WORKFLOW)
+// =========================================================
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    // CRUD Berita
     Route::get('/berita', [BeritaAdminController::class, 'index'])->name('berita.index');
+    Route::get('/berita/siaran-pers', [BeritaAdminController::class, 'siaranPers'])->name('berita.siaran_pers');
+    Route::get('/berita/pengumuman', [BeritaAdminController::class, 'pengumuman'])->name('berita.pengumuman');
     Route::get('/berita/create', [BeritaAdminController::class, 'create'])->name('berita.create');
     Route::post('/berita', [BeritaAdminController::class, 'store'])->name('berita.store');
     Route::get('/berita/{id}/edit', [BeritaAdminController::class, 'edit'])->name('berita.edit');
     Route::put('/berita/{id}', [BeritaAdminController::class, 'update'])->name('berita.update');
     Route::delete('/berita/{id}', [BeritaAdminController::class, 'destroy'])->name('berita.destroy');
+
+    // =============================================
+    // APPROVAL WORKFLOW
+    // =============================================
+    Route::post('/berita/{id}/submit', [BeritaAdminController::class, 'submit'])->name('berita.submit');
+    Route::post('/berita/{id}/approve', [BeritaAdminController::class, 'approve'])->name('berita.approve');
+    Route::post('/berita/{id}/publish', [BeritaAdminController::class, 'publish'])->name('berita.publish');
+    Route::post('/berita/{id}/unpublish', [BeritaAdminController::class, 'unpublish'])->name('berita.unpublish');
+});
+
+// =========================================================
+// NOTIFICATIONS
+// =========================================================
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount'])->name('notifications.unread-count');
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.mark-all-read');
+    Route::post('/notifications/{id}/mark-read', [NotificationController::class, 'markAsRead'])->name('notifications.mark-read');
+});
+
+// =========================================================
+// PEMANFAATAN & KERJASAMA - PROYEK INVESTASI
+// =========================================================
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/proyek-investasi', [ProyekInvestasiController::class, 'index'])->name('proyek-investasi.index');
+    Route::get('/proyek-investasi/create', [ProyekInvestasiController::class, 'create'])->name('proyek-investasi.create');
+    Route::post('/proyek-investasi', [ProyekInvestasiController::class, 'store'])->name('proyek-investasi.store');
+    Route::get('/proyek-investasi/{id}/edit', [ProyekInvestasiController::class, 'edit'])->name('proyek-investasi.edit');
+    Route::put('/proyek-investasi/{id}', [ProyekInvestasiController::class, 'update'])->name('proyek-investasi.update');
+    Route::delete('/proyek-investasi/{id}', [ProyekInvestasiController::class, 'destroy'])->name('proyek-investasi.destroy');
+    Route::post('/proyek-investasi/update-order', [ProyekInvestasiController::class, 'updateOrder'])->name('proyek-investasi.update-order');
+});
+
+// =========================================================
+// PEMANFAATAN & KERJASAMA - DOKUMEN
+// =========================================================
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/dokumen-kerjasama', [DokumenKerjasamaController::class, 'index'])->name('dokumen-kerjasama.index');
+    Route::get('/dokumen-kerjasama/create', [DokumenKerjasamaController::class, 'create'])->name('dokumen-kerjasama.create');
+    Route::post('/dokumen-kerjasama', [DokumenKerjasamaController::class, 'store'])->name('dokumen-kerjasama.store');
+    Route::get('/dokumen-kerjasama/{id}/edit', [DokumenKerjasamaController::class, 'edit'])->name('dokumen-kerjasama.edit');
+    Route::put('/dokumen-kerjasama/{id}', [DokumenKerjasamaController::class, 'update'])->name('dokumen-kerjasama.update');
+    Route::delete('/dokumen-kerjasama/{id}', [DokumenKerjasamaController::class, 'destroy'])->name('dokumen-kerjasama.destroy');
+    Route::get('/dokumen-kerjasama/{id}/download', [DokumenKerjasamaController::class, 'download'])->name('dokumen-kerjasama.download');
+});
+
+// =========================================================
+// INTEGRASI (Hanya Super Admin)
+// =========================================================
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/integrasi', [IntegrasiController::class, 'index'])->name('integrasi');
+    Route::post('/integrasi', [IntegrasiController::class, 'update'])->name('integrasi.update');
+});
+
+// =========================================================
+// PENGATURAN (Hanya Super Admin)
+// =========================================================
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan');
+    Route::post('/pengaturan', [PengaturanController::class, 'update'])->name('pengaturan.update');
 });
 
 // Halaman Admin Edit Halaman Tentang
@@ -114,8 +188,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/user/{id}/edit', [UserAdminController::class, 'edit'])->name('user.edit');
     Route::put('/user/{id}', [UserAdminController::class, 'update'])->name('user.update');
     Route::delete('/user/{id}', [UserAdminController::class, 'destroy'])->name('user.destroy');
-
-    // Update role cepat dari halaman list
     Route::put('/user/{id}/role', [UserAdminController::class, 'quickUpdateRole'])->name('user.quickUpdateRole');
 });
 
@@ -167,6 +239,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/footer', [FooterController::class, 'index'])->name('footer.index');
     Route::post('/footer', [FooterController::class, 'update'])->name('footer.update');
 });
+
 
 // ================= AUTH BAWAAN BREEZE (JANGAN DIHAPUS) =================
 

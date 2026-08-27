@@ -11,7 +11,9 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Berita::latest()->get();
+        // HANYA AMBIL BERITA YANG SUDAH DIPUBLIKASIKAN
+        $berita = Berita::where('status', 'Dipublikasikan')->latest()->get();
+
         $menuNavigasi = MenuNavigasi::where('status', 'Aktif')->get();
         $pengaturan = PengaturanWebsite::first();
 
@@ -21,6 +23,14 @@ class BeritaController extends Controller
     public function show($id)
     {
         $berita = Berita::findOrFail($id);
+
+        // HANYA BISA DIAKSES JIKA BERITA SUDAH DIPUBLIKASIKAN
+        if ($berita->status != 'Dipublikasikan') {
+            abort(404, 'Berita tidak ditemukan');
+        }
+
+        $berita->increment('views');
+
         $menuNavigasi = MenuNavigasi::where('status', 'Aktif')->get();
         $pengaturan = PengaturanWebsite::first();
 
